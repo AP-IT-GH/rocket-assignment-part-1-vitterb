@@ -14,9 +14,12 @@ public class CameraControler : MonoBehaviour
     {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
+    Vector3 targetPos = Vector3.zero;
     private void FixedUpdate()
     {
-        Vector3 targetPos = playerTransform.position + offset;
+
+        if(playerTransform != null)
+            targetPos = playerTransform.position + offset;
 
         transform.position = Vector3.Lerp(transform.position, targetPos, Time.deltaTime * smoothing);
 
